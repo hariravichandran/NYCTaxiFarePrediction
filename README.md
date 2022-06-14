@@ -10,4 +10,4 @@ Several prediction models were tried. We report on two different models: Random 
 
 
 
-![feature-engineering-slide7-green-ml2](C:\Users\Ravichandran\Downloads\feature-engineering-slide7-green-ml2.png)
+![feature-engineering](feature-engineering.png)
