@@ -12,10 +12,7 @@ abspath = os.path.abspath(__file__)
 dname = os.path.dirname(abspath)
 os.chdir(dname)
 
-# TODO: Remove nrows
-# train_raw = pd.read_csv(os.path.join('all', 'train_01p.csv'), nrows=5000)
-# train_raw = pd.read_csv(os.path.join('all', 'train_01p.csv'), nrows=500)
-train_raw = pd.read_csv(os.path.join('all', 'train_01p.csv'))
+train_raw = pd.read_csv(os.path.join('all', 'train.csv'))
 
 
 train_raw = train_raw.dropna(axis=0)
@@ -35,7 +32,6 @@ train_raw['average_fares'] = train_raw['fare_amount'].mean()
 labels = train_raw['fare_amount']
 features = train_raw.drop('fare_amount', 1)
 
-# TODO: select variables
 features = features[['passenger_count', 'euclidean_distance', 'pickup_hour', 'pickup_minute',
                  'month', 'dayofweek', 'pickup_longitude', 'pickup_latitude', 'dropoff_longitude', 'dropoff_latitude', 'dayofyear', 'average_fares']]
 
@@ -54,11 +50,3 @@ predictions = rf.predict(test_features)
 
 print("Mean Absolute Error: ", mean_absolute_error(test_labels, predictions))
 print("Mean Absolute Percentage Error: ", mean_absolute_percentage_error(test_labels, predictions))
-
-
-# errors = abs(predictions - test_labels)  # Errors
-# print('Mean Absolute Error:', round(np.mean(errors), 2), 'dollars.')
-#
-# mape = 100 * (errors / test_labels)
-# accuracy = 100 - np.mean(mape)
-# print('Accuracy:', round(accuracy, 2), '%.')
